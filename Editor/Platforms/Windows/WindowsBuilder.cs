@@ -93,7 +93,11 @@ namespace PlayEveryWare.EpicOnlineServices.Editor.Build
                 Debug.Log($"The '{nameof(PlatformFlags.DisableOverlay)}' flag has been configured, EOSBootstrapper.exe will not be included in this build.");
                 return;
             }
+#else
+            Debug.Log("EOS is disabled, EOSBootstrapper.exe will not be included in this build.");
+            return;
 #endif
+
             /*
              * NOTE:
              *
@@ -123,7 +127,7 @@ namespace PlayEveryWare.EpicOnlineServices.Editor.Build
              */
 
             // Determine whether to install EAC
-            
+
             ToolsConfig toolsConfig = await Config.GetAsync<ToolsConfig>();
 
             string bootstrapperName = null;
